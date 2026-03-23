@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +8,41 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <script src="./scripts/script.js" defer></script>
 </head>
+
 <body>
     <div class="container">
-        <div id="calculation">Calculations</div>
-        <div id="numbers">
-            <div class="row">
-                <div class="btn btn-number" id="1">1</div>
-                <div class="btn btn-number" id="2">2</div>
-                <div class="btn btn-number" id="3">3</div>
-            </div>
-            <div class="row">
-                <div class="btn btn-number" id="4">4</div>
-                <div class="btn btn-number" id="5">5</div>
-                <div class="btn btn-number" id="6">6</div>
-            </div>
-            <div class="row">
-                <div class="btn btn-number" id="7">7</div>
-                <div class="btn btn-number" id="8">8</div>
-                <div class="btn btn-number" id="9">9</div>
-            </div>
+        <div>
+            <div class="screen"></div>
+            <button id="clear"></button>
         </div>
-        <div id="operations">
-            <div class="row">
-                <div class="btn" id="plus">+</div>
-                <div class="btn" id="minus">-</div>
-                <div class="btn" id="multiplication">x</div>
-                <div class="btn" id="division">/</div>
-            </div>
+        <div class="first-row">
+            <button id="1">1</button>
+            <button id="2">2</button>
+            <button id="3">3</button>
+            <button id="plus">+</button>
         </div>
-        <div class="btn" id="equal">=</div>
+        
+        <div class="second-row">
+            <button id="4">4</button>
+            <button id="5">5</button>
+            <button id="6">6</button>
+            <button id="minus">-</button>
+        </div>
+        
+        <div class="third-row">
+            <button id="7">7</button>
+            <button id="8">8</button>
+            <button id="9">9</button>
+            <button id="multiplication">x</button>
+        </div>
+
+        <div class="fourth-row">
+            <button id=".">.</button>
+            <button id="0">0</button>
+            <button id="=">=</button>
+            <button id="division">/</button>
+        </div>
     </div>
 </body>
+
 </html>
