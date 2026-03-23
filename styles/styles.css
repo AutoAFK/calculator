@@ -9,9 +9,55 @@ body {
     font-size: 24px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 900;
-    
+
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.container {
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-row,
+.row {
+    margin-bottom: 20px;
+}
+
+.screen-row {
+    flex: 1 0 75px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.screen {
+    flex: 2 1 150px;
+    border:2px solid black;
+}
+
+.clear-btn {
+    flex: 0 0 70px;
+}
+
+.btn-operations {
+    flex: 2 1 auto;
+}
+
+button {
+    padding: 20px 25px;
+    border-radius: 15px;
+    background-color: antiquewhite;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
 }
