@@ -1,9 +1,9 @@
 const operations = document.querySelector(".btn-operations");
 const screen = document.querySelector("#screen");
 const operationsSigns = "+-*/";
-let [left, right] = [0, 0];
 
-/* iteration is used to see if its the first 
+/* =============== NOTE ===============
+iteration is used to see if its the first 
 that the user have clicked on ethier one of the 
 operations.
 
@@ -12,16 +12,20 @@ just display it on the screen. After the first round
 it will evaluate the operation and then enter it to the
 screen.
 */
-let iteration = 0;
+const calculatorObj = {
+    left: 0,
+    right: 0,
+    iteration: 0,
+    currentOperation: '',
+    screenText: '',
+}
 
 operations.addEventListener('click', (event) => {
     const target = event.target;
 
     switch (target.id) {
         case 'clear':
-            [left, right] = 0;
-            screen.textContent = "";
-            iteration = 0;
+            clearOp(calculatorObj);
             break;
         case 'plus':
             break;
