@@ -6,7 +6,7 @@
 }
 
 body {
-    font-size: 24px;
+    font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 900;
 
@@ -40,6 +40,10 @@ body {
 .screen {
     flex: 2 1 auto;
     border:2px solid black;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    text-wrap: wrap;
 }
 
 .clear-btn {

@@ -1,21 +1,32 @@
 const app = document.querySelector("#app");
 const screen = document.querySelector(".screen");
-const operationsSigns = "+-*/";
+
+const operationsSigns = "+-x/";
+const isOpeartion = (text) => operationsSigns.includes(text);
 
 const calculatorObj = {
     sum: 0,
     screenText: '',
+    opCount: 0,
 
-    updateScreenText(text = ''){
+    appendScreenText(text){
+        if(typeof text !== "string") return;
         if(operationsSigns.includes(text)){
             text = ` ${text} `
+            this.opCount++;
         }
-        this.screenText += text;
+        if(text !== ''){
+            this.screenText += text;
+        }
+        this.updateScreen();
+    },
+
+    updateScreen(){
         screen.textContent = this.screenText;
     },
 
     equal(){
-        let [left,op,right] = this.screenText.split(" ");
+        let [left,op,right] = this.screenText.trim().split(" ");
         left = Number(left);
         right = Number(right);
 
@@ -34,28 +45,37 @@ const calculatorObj = {
                     this.displayError('Cannot divide by zero.');
                     return;
                 } 
-                this.sum = Number.parseFloat((left / right)).toFixed(2);                
+                this.sum = Number.parseFloat((left / right)).toPrecision(2);                
                 break;
         }
+        this.sum = String(this.sum).trim();
         this.screenText = this.sum;
-        this.updateScreenText();
+        this.opCount = 0;
+        this.updateScreen();
     },
 
     displayError(error){
         this.screenText = error;
-        this.updateScreenText();
+        this.updateScreen();
         // Reset to default in case the user enter a number if the error
         // is displayed.
         this.screenText = '';
     },
 
+    hasOperation(){
+        return this.opCount >= 1;
+    },
+
     clear(){
         this.screenText = '';
-        this.updateScreenText();
+        this.sum = 0;
+        this.opCount = 0;
+        this.updateScreen();
     },
 }
 
 app.addEventListener('click', (event) => {
+    if(event.target.tagName !== 'BUTTON') return;
     const target = event.target.id;
     const calc = calculatorObj;
 
@@ -67,7 +87,10 @@ app.addEventListener('click', (event) => {
             calc.equal();
             break;
         default:
-            calc.updateScreenText(target);
+            if(isOpeartion(target) && calc.hasOperation()){
+                calc.equal();
+            }
+            calc.appendScreenText(target);
             break;
     }
 })
