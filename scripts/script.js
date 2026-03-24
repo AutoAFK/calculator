@@ -16,7 +16,7 @@ const calculatorObj = {
             text = ` ${text} `
             this.opCount++;
             if (decimalPointButton.disabled) {
-                this.toggleHasDecimal();
+                this.setDecimalButtonDisabledValue(false);
             }
         }
         if (text !== '') {
@@ -62,9 +62,9 @@ const calculatorObj = {
         this.opCount = 0;
         this.updateScreen();
         if (Number.isInteger(this.sum)) {
-            decimalPointButton.disabled = false;
+            this.setDecimalButtonDisabledValue(false);
         } else {
-            decimalPointButton.disabled = true;
+            this.setDecimalButtonDisabledValue(true);
         }
     },
 
@@ -80,9 +80,8 @@ const calculatorObj = {
         return this.opCount >= 1;
     },
 
-    toggleHasDecimal() {
-        console.log(decimalPointButton.disabled);
-        decimalPointButton.disabled = !decimalPointButton.disabled;
+    setDecimalButtonDisabledValue(bool) {
+        decimalPointButton.disabled = bool;
     },
 
     clear() {
@@ -90,7 +89,7 @@ const calculatorObj = {
         this.sum = 0;
         this.opCount = 0;
         this.updateScreen();
-        decimalPointButton.disabled = false;
+        this.setDecimalButtonDisabledValue(false);
     },
 }
 
@@ -102,7 +101,7 @@ app.addEventListener('click', (event) => {
     switch (target.id) {
         case 'decimalPoint':
             calc.appendScreenText(".");
-            calc.toggleHasDecimal();
+            calc.setDecimalButtonDisabledValue(true);
             break;
         case 'clear':
             calc.clear();
