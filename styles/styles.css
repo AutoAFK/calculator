@@ -31,14 +31,14 @@ body {
 }
 
 .screen-row {
-    flex: 1 0 75px;
+    flex: 1 0 auto;
     display: flex;
     justify-content: space-between;
     gap: 20px;
 }
 
 .screen {
-    flex: 2 1 150px;
+    flex: 2 1 auto;
     border:2px solid black;
 }
 
